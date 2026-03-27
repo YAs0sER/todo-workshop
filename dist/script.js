@@ -8,7 +8,7 @@ addForm.addEventListener('submit', (e)=>{
   e.preventDefault();
   let task = createTask(getTitle());
   tasks.push(task);
-  render();
+  render(tasks);
 });
 
 function getTitle(){
@@ -26,16 +26,21 @@ function createTask(title){
 }
 
 // render tasks
-function render(){
+function render(tasks){
   const tasksContainer = document.getElementById("task-container");
+  tasksContainer.innerHTML = '';
 
   
   tasks.forEach((tk)=>{
-const taskHolder = document.createElement("div").classList.add("task");
+const taskHolder = document.createElement("div");
+taskHolder.classList.add("task");    
+
+    
+
 taskHolder.innerHTML = `
-      <input type="checkbox" class="done-marker checkbox-round" id="done-marker">
+      <input type="checkbox" class="done-marker checkbox-round" id="done-marker" ${tk.state==='done'?'checked':''}>
        <div class="task-content">
-         <p class="task-text">${tk.title}</p>
+         <p class="task-text ${tk.state==='done'?'done':''}">${tk.title}</p>
        </div>
      <button class="delete" id="del-btn">
        <svg width="45px" height="45px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,3 +55,39 @@ tasksContainer.appendChild(taskHolder);
   });
 
 }
+
+//done marker
+const tasksContainer = document.getElementById("task-container");
+
+tasksContainer.addEventListener("click", (e)=>{
+  if(e.target.classList.contains("done-marker")){
+    //find parent text content
+    let task = e.target.parentElement.querySelector(".task-text");
+    //change style
+    task.classList.toggle("done");
+    //find it in tasks
+    let idx = tasks.findIndex((tk)=> tk.title === task.textContent);
+    if(idx !== -1){
+      if(tasks[idx].state === "ongoing") tasks[idx].state = "done";
+      else tasks[idx].state = "ongoing";
+    }
+  }
+});
+
+//Filtering system
+const allBtn = document.getElementById("all");
+const ongoingBtn = document.getElementById("on-going");
+const doneBtn = document.getElementById("done");
+
+allBtn.addEventListener('click', ()=>{
+  //render all tasks
+  render(tasks);
+});
+ongoingBtn.addEventListener('click', ()=>{
+  const ongoingtasks = tasks.filter((tk)=> tk.state === 'ongoing');
+  render(ongoingtasks);
+});
+doneBtn.addEventListener('click', ()=>{
+  const donetasks = tasks.filter((tk)=> tk.state === 'done');
+  render(donetasks);
+});
