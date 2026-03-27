@@ -1,0 +1,148 @@
+body{
+  background-color:#131414;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  height:100vh;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+main{
+  display: flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+  height:85%;
+  
+}
+form{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.task-input{
+  width:75vw;
+  height: 25px;
+  padding:15px;
+  border: 0;
+  border-radius:15px;
+  background-color:#131414;
+  color:white;
+}
+.btn{
+  height:45px;
+  width:45px;
+  border-radius:50%;
+  padding:15px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-color:#FF5A5A;
+  border:0;
+  color: white;
+  font-size: 45px;
+  margin-left:5px;
+}
+
+.task-container{
+  flex:1;
+  display:flex;
+  justify-content:flex-start;
+  flex-direction: column;
+  width:75vw;
+  padding:0px 15px;
+  overflow-y: auto;
+  overflow-x:hidden;
+  min-height: 0; 
+  margin-top:10px;
+}
+.task{
+  display: flex;
+  align-items:center;
+  flex:1;
+  flex-grow:0;
+  width:100%;
+  padding:15px;
+  border-radius:15px;
+}
+.task-text{
+ margin-left: 25px; 
+}
+
+.delete{
+  margin-left:auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:35px;
+  height:35px;
+  border:none;
+  background-color: #00000000;
+  border-radius:15px;
+}
+.task-content{
+  display:flex;
+  flex-direction:column;
+  
+  align-items:center;
+  justify-content:center;
+  margin-left: 25px;
+}
+.task-text{
+  margin:0;
+}
+.task-tag{
+  margin:0;
+  align-self:flex-start;
+}
+.done-marker{
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  
+}
+
+.task:hover{
+  background-color:#363838;
+}
+.task-tag{
+  color: #FF5A5A;
+}
+.btn:hover{
+ background-color:#FF4A4A;
+}
+
+.checkbox-round {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 50%; /* This creates the circular shape */
+    vertical-align: middle;
+    border: 2px solid #ddd;
+    -webkit-appearance: none; /* For compatibility */
+    appearance: none; 
+    outline: none;
+    cursor: pointer;
+}
+
+.checkbox-round:checked {
+  background-color: #FF4A4A; /* Color when checked */
+}
+.filter{
+  background-color: #FF4A4A;
+  color: white;
+  border:0;
+  border-radius:15px;
+  padding:10px;
+  width:80px;
+}
+footer{
+  justify-self:flex-end;
+  margin-bottom:20px;
+}
+
+.done{
+  text-decoration: line-through;
+  text-decoration-color: #FF4A4A;
+  text-decoration-thickness: 3px;
+}
